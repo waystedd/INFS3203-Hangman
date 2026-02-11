@@ -181,6 +181,13 @@ function guessLetter(letter) {
     }
     
     gameState.guessedLetters.push(letter);
+
+    // FIX: Find the button by ID and disable it/add used class
+    const button = document.getElementById('key-' + letter);
+    if (button) {
+        button.disabled = true;
+        button.classList.add('used'); // Make sure your CSS has a .used style!
+    }
     
     if (!gameState.currentWord.includes(letter)) {
         gameState.wrongGuesses++;
